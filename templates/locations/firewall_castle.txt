@@ -1,0 +1,58 @@
+====================================================================
+                        FIREWALL CASTLE
+====================================================================
+                        ╔════════════╗
+                        ║   LOCKED   ║
+                        ╚════════════╝
+           (Requires: FIREWALL KEY to enter)
+
+====================================================================
+                    EKSTERIOR KASTIL
+
+Benteng pertahanan yang megah dan menakutkan! Tembok setinggi 30 meter
+terbuat dari encrypted brick, setiap bata adalah kode enkripsi yang
+berputar-putar. Jembatan angkat terkunci dengan chain dari checksum
+besi. Parit di sekelilingnya berisi liquid firewall yang mendidih.
+
+PINTU GERBANG:
+Pintu baja setebal 2 meter dengan pola:
+    🔐 AES-256 ENCRYPTED GATE 🔐
+Di atas pintu terpampang tulisan:
+    "NO ENTRY WITHOUT PROPER AUTHENTICATION"
+
+MENARA PENJAGA:
+Dua menara menjulang di sisi gerbang. Di puncaknya, Anda bisa melihat
+cahaya scanner berputar-putar - Firewall Guardians sedang berpatroli.
+
+SUARA:
+- Dengung firewall forcefield
+- Bunyi klik mekanisme keamanan
+- Langkah berat Firewall Guardian
+- Alarm sistem jika mendeteksi intruder
+
+SISTEM KEAMANAN:
+1. Motion Scanner - mendeteksi gerakan mencurigakan
+2. Encryption Wall - tembok yang berubah pola setiap 5 detik
+3. Guardian Automaton - robot penjaga dengan logic attack
+4. Data Moats - parit yang menghapus data tidak sah
+
+====================================================================
+                      SEJARAH SINGKAT
+
+Firewall Castle dibangun oleh The Architects untuk melindungi
+Server Core dari invasi malware dan corrupted data. Selama berabad-abad,
+tidak ada yang berhasil menembus pertahanannya tanpa Firewall Key.
+
+Legenda mengatakan kunci itu diberikan hanya kepada mereka yang
+bisa membuktikan kemurnian kode dan ketulusan niat.
+
+====================================================================
+                        PERINGATAN
+
+"Mencoba masuk tanpa otorisasi akan mengakibatkan:
+1. Immediate system alert
+2. Guardian attack protocol activation
+3. Permanent IP ban from Algoria
+4. Possible data corruption"
+
+[Gunakan FIREWALL KEY untuk membuka gerbang]

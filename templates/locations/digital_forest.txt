@@ -1,0 +1,50 @@
+====================================================================
+                        DIGITAL FOREST
+====================================================================
+
+HUTAN YANG HIDUP DARI DATA DAN KODE
+
+Di depan Anda membentang pemandangan yang luar biasa: pohon-pohon yang
+terbuat dari aliran data hijau, daun-daun yang adalah kode binary
+berkedip 0101 dan 1010. Sungai data mengalir lembut, airnya berwarna
+biru elektrik.
+
+SUARA:
+- Desiran binary di angin digital
+- Kicauan burung-burung data
+- Gemerisik daun kode saat tertiup angin sistem
+
+FITUR KHUSUS:
+1. POHON DATA RAKSASA
+   Sebatang pohon data tertua di Algoria, batangnya berisi
+   log sistem sejak dunia ini diciptakan.
+
+2. SUNGAI ALGORITMA
+   Aliran data murni yang mengandung algoritma-algoritma dasar.
+   Terkadang fish-data melompat ke permukaan.
+
+3. GLADE DEBUG
+   Tempat terbuka di mana bug-bug kecil berkumpul. Area ini
+   sering digunakan programmer kuno untuk testing.
+
+4. JALAN BATU BINARY
+   Jalan setapak yang terbuat dari batu-batu dengan pola binary.
+   Membentang ke utara menuju Firewall Castle.
+
+BAHAYA:
+- Bug Monster bersembunyi di antara pepohonan
+- Area tertentu memiliki logic trap
+- Terkadang terjadi data storm yang menguras energy
+
+PESAN SISTEM:
+"Welcome to Digital Forest. This is the entry point to Algoria.
+Collect resources, solve puzzles, but beware of corrupted entities."
+
+====================================================================
+                        LEGENDA
+====================================================================
+Konon, Digital Forest adalah memory dump pertama Algoria.
+Setiap pohon mewakili sebuah program yang pernah dijalankan.
+Setiap daun adalah baris kode yang pernah ditulis.
+
+Di sini lah The First Programmer menanam benih dunia digital ini.

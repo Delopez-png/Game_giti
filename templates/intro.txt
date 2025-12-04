@@ -1,0 +1,34 @@
+====================================================================
+                     THE LOST CODE OF ALGORIA
+====================================================================
+
+Selamat datang di dunia Algoria, dunia digital yang penuh misteri!
+
+Sebagai seorang programmer terkemuka, Anda secara tidak sengaja 
+terjebak dalam dunia ini setelah melakukan eksperimen dengan 
+kode quantum. Sekarang, satu-satunya cara untuk kembali ke 
+dunia nyata adalah dengan menemukan "The Lost Code" - fragmen 
+kode purba yang dikatakan memiliki kekuatan untuk membuka portal 
+antar dimensi.
+
+Namun, perjalanan tidak akan mudah. Dunia Algoria dipenuhi dengan:
+- Bug Monster yang mengancam
+- Puzzle kode yang rumit
+- Firewall yang terkunci
+- Data terenkripsi yang harus dipecahkan
+
+Anda harus mengumpulkan pengetahuan, item, dan menyelesaikan 
+tantangan untuk mencapai Server Core tempat The Lost Code 
+disimpan.
+
+====================================================================
+                        PETUNJUK PERMAINAN
+====================================================================
+1. Gunakan perintah teks untuk berinteraksi dengan dunia
+2. Ketik 'help' untuk melihat daftar perintah
+3. Jelajahi setiap area dengan seksama
+4. Kumpulkan item dan pengetahuan
+5. Waspadai musuh dan selesaikan puzzle
+6. Temukan The Lost Code untuk menang!
+
+====================================================================
