@@ -1,0 +1,45 @@
+====================================================================
+                       STORMBYTE EXPANSE
+====================================================================
+                       ⛈️ WILAYAH HUJAN DATA ⛈️
+
+Wilayah luas di mana hujan data terjadi tanpa henti. Setiap
+tetes hujan adalah bit informasi bersinar (0 atau 1). Petir
+berupa error messages menyambar sesekali.
+
+FENOMENA CUACA:
+- DATA RAIN: Hujan bit 0 dan 1
+- ERROR LIGHTNING: Petir error messages
+- BUFFER WIND: Angin buffer overflow
+- CACHE FOG: Kabut cache memory
+
+JENIS HUJAN:
+- Light rain: Bits kecil (nibbles)
+- Heavy storm: Bytes besar
+- Thunderstorm: Packets with errors
+- Acid rain: Corrupted bits
+
+SUARA:
+- Tic-tac tetesan bit
+- Guntur error messages
+- Deru angin buffer
+- Gemuruh storm front
+
+EFEK STORM:
+- Energy recharge: +10/minute (lightning)
+- Health risk: 5% chance lightning strike
+- Visibility: Low during heavy rain
+- Movement: Slowed by 30%
+
+BAHAYA:
+- Lightning strikes: 20-40 damage
+- Flash floods: Could wash you away
+- Data corruption: From acid rain
+
+KONEKSI:
+- WEST: Dari Algolane Square
+- NORTH: Menuju Server Core
+
+PUZZLE:
+Weather station dengan puzzle
+bitwise operations...

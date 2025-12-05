@@ -1,0 +1,50 @@
+====================================================================
+                      CODEMANTLE DOMINION
+====================================================================
+                      👑 KERAJAAN SYNTAX 👑
+
+Kerajaan megah yang seluruhnya terbuat dari block-syntax emas,
+rune algoritma perak, dan pilar data berlian. Function-call
+banners berkibar di angin digital, deklarasi variabel tertulis
+di dinding-dinding istana.
+
+STRUKTUR KERAJAAN:
+- SYNTAX THRONE: Takhta dari kode murni
+- ALGORITHM HALL: Balairung algoritma
+- LIBRARY TOWERS: Menara perpustakaan code
+- COMMENT GARDENS: Taman komentar indah
+
+ARSITEKTUR:
+- Walls: Curly braces {}
+- Columns: Square brackets []
+- Arches: Parentheses ()
+- Windows: Angle brackets <>
+
+PENDUDUK ROYAL:
+- CLASS NOBLES: Bangsawan OOP
+- FUNCTION KNIGHTS: Ksatria function
+- VARIABLE PEASANTS: Rakyat variabel
+- COMMENT BARDS: Penyair komentar
+
+SUARA:
+- Lantunan declaration hymns
+- Suara "compile" yang megah
+- Diskusi algorithm council
+
+KEBANGSAWANAN:
+⚠️ AREA TERKUNCI ⚠️
+Butuh ROYAL SYNTAX TOKEN untuk masuk
+Hanya bangsawan code yang diizinkan!
+
+ETIKET:
+1. Always declare before use
+2. Proper indentation required
+3. No goto statements allowed
+
+KONEKSI:
+- DOWN: Dari Kernel Spire
+- NORTH: Menuju Server Core
+
+PUZZLE:
+Royal code challenge dengan
+puzzle loop syntax...

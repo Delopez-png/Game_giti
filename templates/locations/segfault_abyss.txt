@@ -1,0 +1,28 @@
+====================================================================
+                          SEGFAULT ABYSS
+====================================================================
+
+JURANG CRASH ALGORITMA
+
+Anda berdiri di tepi jurang yang sangat dalam. Dinding-dindingnya
+memancarkan cahaya biru pucat dari stack trace yang terpampang:
+"Segmentation fault at 0x7ffd4a2b"
+"Core dumped"
+"Null pointer exception"
+
+KABUT ERROR:
+Kabut abu-abu berisi error messages melayang di atas jurang.
+Terkadang suara "Segmentation fault" bergema dari kedalaman.
+
+JALAN YANG MUNGKIN:
+- SOUTH: Kembali ke Digital Forest
+- DOWN: Menuruni jurang ke Memory Gap
+- EAST: Menuju Logic Horizon Plains
+
+PERINGATAN:
+Area ini tidak stabil. Terkadang terjadi random crash
+yang bisa menguras energy Anda.
+
+PUZZLE:
+Ada terminal rusak di tepi jurang yang menampilkan
+pertanyaan tentang debugging...

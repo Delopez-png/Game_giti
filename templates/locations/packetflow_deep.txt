@@ -1,0 +1,30 @@
+====================================================================
+                          PACKETFLOW DEEP
+====================================================================
+                       🌊 LAUTAN PACKET DATA 🌊
+
+Anda menyelam ke dalam lautan data yang dalam. Airnya berwarna
+biru elektrik transparan. Packet TCP/IP berenang seperti ikan
+berwarna-warni:
+- Packet merah: HTTP requests
+- Packet hijau: UDP datagrams  
+- Packet kuning: DNS queries
+
+TERUMBU ROUTER:
+Di dasar laut, terlihat terumbu karang berbentuk router
+dengan port-port yang menyala. Kabel fiber optic seperti
+rumput laut bergoyang.
+
+SUARA:
+- Desiran arus packet
+- Bunyi "ping" dari echo requests
+- Suara "connection established"
+
+BAHAYA:
+- Packet Shark yang lapar
+- Arus packet yang sangat cepat bisa membawa Anda terbawa
+- Timeout storms yang menguras energy
+
+TANTANGAN:
+Di dekat terumbu router, ada console network yang menampilkan
+puzzle tentang TCP handshake...

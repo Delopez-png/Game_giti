@@ -4,8 +4,14 @@ from colorama import Fore, Style
 from models.player import Player
 from models.location import Location
 from models.item import Item
-from utils import formatters, validators, constants
-from templates import load_template  # Import tambahan
+from templates import load_template
+from utils.constants import (
+    GAME_TITLE, DIRECTIONS, COMMANDS, 
+    heal_effect, energy_effect,
+    PUZZLE_QUESTIONS, LOCATION_DESCRIPTIONS,
+    ITEM_COLORS, ENEMY_STATS, WIN_REQUIREMENTS
+)
+from utils import formatters, validators  # IMPORT TAMBAHAN INI!
 
 class GameService:
     def __init__(self):
@@ -24,58 +30,209 @@ class GameService:
     
     def create_items(self):
         """Membuat item-item dalam game"""
+        # Existing items
         self.items = {
-            'debug_tool': Item(
-                name="Debug Tool", 
-                description="Alat untuk debugging bug di Algoria", 
-                item_type="tool",
-                value=15
-            ),
-            'health_potion': Item(
-                name="Health Potion", 
-                description="Memulihkan 30 health", 
-                item_type="potion",
-                effect=constants.heal_effect
-            ),
-            'energy_drink': Item(
-                name="Energy Drink", 
-                description="Memulihkan 40 energy", 
-                item_type="potion",
-                effect=constants.energy_effect
-            ),
-            'firewall_key': Item(
-                name="Firewall Key", 
-                description="Kunci untuk membuka Firewall Castle", 
-                item_type="key",
-                value=1
-            ),
-            'encrypted_data': Item(
-                name="Encrypted Data", 
-                description="Data terenkripsi dari Server Core", 
-                item_type="data",
-                value=50
-            ),
-            'logic_sword': Item(
-                name="Logic Sword", 
-                description="Senjata untuk melawan Bug Monster", 
-                item_type="weapon",
-                value=25
-            )
+            'debug_tool': Item("Debug Tool", "Alat debugging", "tool", 15),
+            'health_potion': Item("Health Potion", "+30 health", "potion", heal_effect),  # PERBAIKAN: ganti constants.heal_effect jadi heal_effect
+            'energy_drink': Item("Energy Drink", "+40 energy", "potion", energy_effect),  # PERBAIKAN: ganti constants.energy_effect jadi energy_effect
+            'firewall_key': Item("Firewall Key", "Buka Firewall Castle", "key", 1),
+            'encrypted_data': Item("Encrypted Data", "Data terenkripsi", "data", 50),
+            'logic_sword': Item("Logic Sword", "Senjata vs Bug", "weapon", 25),
         }
+        
+        # NEW ITEMS untuk lokasi baru
+        new_items = {
+            # Item untuk puzzle dan lokasi terkunci
+            'logic_key': Item("Logic Key", "Membuka Logic Horizon", "key", 10),
+            'defrag_tool': Item("Defrag Tool", "Membersihkan fragment data", "tool", 20),
+            'kernel_access': Item("Kernel Access Card", "Akses ke Logic Kernel", "key", 30),
+            'heart_key': Item("Heart Key", "Membuka Heartline Node", "key", 40),
+            'royal_syntax': Item("Royal Syntax Token", "Masuk Codemantle", "key", 50),
+            'antivirus_sword': Item("Antivirus Sword", "Senjata vs Malvex", "weapon", 60),
+            
+            # Item khusus
+            'packet_sniffer': Item("Packet Sniffer", "Menangkap packet di Packetflow Deep", "tool", 25),
+            'memory_shard': Item("Memory Shard", "Fragment memori dari Memory Gap", "data", 35),
+            'binary_seed': Item("Binary Seed", "Bibit dari Binaryheart Woods", "special", 15),
+            'storm_cape': Item("Storm Cape", "Melindungi dari hujan data", "armor", 45),
+            'nullwave_orb': Item("Nullwave Orb", "Bola energi gelap Malvex", "artifact", 100),
+            
+            # Potion baru
+            'logic_potion': Item("Logic Potion", "+50 knowledge", "potion", lambda p: p.add_knowledge(50)),
+            'data_potion': Item("Data Potion", "Memulihkan semua energy", "potion", lambda p: p.restore_energy(100)),
+            'quantum_potion': Item("Quantum Potion", "+50 health dan +50 energy", "potion", 
+                                  lambda p: (p.heal(50), p.restore_energy(50))),
+        }
+        
+        self.items.update(new_items)
     
     def create_locations(self):
         """Membuat lokasi-lokasi dalam game"""
-        # Digital Forest
+        
+        # ========================
+        # 1. DEFINISI SEMUA LOKASI
+        # ========================
+        
+        # Digital Forest (Starting Location)
         digital_forest = Location(
             location_id="digital_forest",
             name="Digital Forest",
             description=(
                 "Anda berada di Hutan Digital. Pohon-pohon data tumbuh di sekeliling.\n"
-                "Suara binary berdesir di angin. Ada jalan ke utara menuju Firewall Castle."
+                "Suara binary berdesir di angin."
             ),
             items=[self.items['debug_tool'], self.items['health_potion']]
         )
-        digital_forest.add_connection("north", "firewall_castle")
+        
+        # Segfault Abyss
+        segfault_abyss = Location(
+            location_id="segfault_abyss",
+            name="Segfault Abyss",
+            description=(
+                "Jurang dalam yang muncul setelah crash besar algoritma. "
+                "Dinding jurang berisi stack trace yang berkedip. Suara 'segmentation fault' "
+                "bergema dari kedalaman."
+            ),
+            is_locked=False
+        )
+        
+        # Packetflow Deep
+        packetflow_deep = Location(
+            location_id="packetflow_deep",
+            name="Packetflow Deep",
+            description=(
+                "Lautan data dengan arus packet yang sangat cepat. "
+                "Anda melihat packet TCP/IP berenang seperti ikan. "
+                "Cahaya dari router-coral menyinari dasar lautan."
+            ),
+            is_locked=False
+        )
+        
+        # Logic Horizon Plains
+        logic_horizon = Location(
+            location_id="logic_horizon",
+            name="Logic Horizon Plains",
+            description=(
+                "Padang luas tempat logika mengalir bebas. "
+                "Rumput-rumput boolean (true/false) bergoyang tertiup angin. "
+                "Di kejauhan, kawanan algoritma bermigrasi."
+            ),
+            is_locked=True,
+            required_item="logic_key"
+        )
+        
+        # Algolane Merchant Square
+        algolane_square = Location(
+            location_id="algolane_square",
+            name="Algolane Merchant Square",
+            description=(
+                "Pasar digital tempat avatar dan bot berdagang. "
+                "Kios-kios menjual memory chips, quantum bits, dan algoritma langka. "
+                "Suara tawar-menawar dalam berbagai bahasa programming."
+            ),
+            is_locked=False
+        )
+        
+        # Fragment Hive
+        fragment_hive = Location(
+            location_id="fragment_hive",
+            name="Fragment Hive",
+            description=(
+                "Sarang bug data yang tidak lengkap. Dinding-dinding hexagonal "
+                "berisi fragment code yang bergerak-gerak. Suara dengung byte "
+                "yang terkorupsi memenuhi udara."
+            ),
+            is_locked=True,
+            required_item="defrag_tool"
+        )
+        
+        # The Logic Kernel Spire
+        kernel_spire = Location(
+            location_id="kernel_spire",
+            name="The Logic Kernel Spire",
+            description=(
+                "Menara tinggi yang berfungsi sebagai otak utama Algoria. "
+                "Processor core berputar di puncak, memancarkan gelombang logika. "
+                "Tangga spiral terbuat dari assembly code."
+            ),
+            is_locked=True,
+            required_item="kernel_access"
+        )
+        
+        # The Shattered Memory Gap
+        memory_gap = Location(
+            location_id="memory_gap",
+            name="The Shattered Memory Gap",
+            description=(
+                "Ruang kosong tempat memori-memori hilang berkumpul. "
+                "Fragment memori melayang seperti awan. Terkadang flashback "
+                "dari program yang sudah dihapus muncul tiba-tiba."
+            ),
+            is_locked=False
+        )
+        
+        # Central Heartline Node
+        heartline_node = Location(
+            location_id="heartline_node",
+            name="Central Heartline Node",
+            description=(
+                "Jantung dunia berupa kristal data raksasa. "
+                "Cahaya biner (0/1) berdenyut seperti detak jantung, "
+                "mengalirkan energi ke seluruh Algoria."
+            ),
+            is_locked=True,
+            required_item="heart_key"
+        )
+        
+        # Codemantle Dominion
+        codemantle = Location(
+            location_id="codemantle",
+            name="Codemantle Dominion",
+            description=(
+                "Kerajaan megah dari block-syntax dan rune algoritma. "
+                "Pilar data menjulang tinggi, dihiasi dengan comment emas. "
+                "Function-call banners berkibar di angin digital."
+            ),
+            is_locked=True,
+            required_item="royal_syntax"
+        )
+        
+        # Malvex's Throne (Nullwave Domain)
+        malvex_throne = Location(
+            location_id="malvex_throne",
+            name="Malvex, Sovereign of the Nullwave",
+            description=(
+                "Takhta Raja Virus yang mampu menelan kode. "
+                "Segala sesuatu di sini tampak terdistorsi. "
+                "Malvex sendiri adalah entitas data hitam dengan mata merah menyala."
+            ),
+            is_locked=True,
+            required_item="antivirus_sword"
+        )
+        
+        # Stormbyte Expanse
+        stormbyte = Location(
+            location_id="stormbyte",
+            name="Stormbyte Expanse",
+            description=(
+                "Wilayah dengan hujan data tak henti. "
+                "Setiap tetes hujan adalah bit informasi bersinar. "
+                "Petir berupa error messages menyambar sesekali."
+            ),
+            is_locked=False
+        )
+        
+        # Binaryheart Woods
+        binaryheart = Location(
+            location_id="binaryheart",
+            name="Binaryheart Woods",
+            description=(
+                "Hutan kuno dengan 'detak angka' seperti jantung digital. "
+                "Pohon-pohon berakar dalam binary soil. "
+                "Daun-daun berubah warna antara 0 (hijau) dan 1 (biru)."
+            ),
+            is_locked=False
+        )
         
         # Firewall Castle
         firewall_castle = Location(
@@ -83,15 +240,13 @@ class GameService:
             name="Firewall Castle",
             description=(
                 "Sebuah kastil firewall yang megah berdiri di depan Anda.\n"
-                "Pintu gerbang terkunci dengan kunci enkripsi. Anda membutuhkan Firewall Key."
+                "Pintu gerbang terkunci dengan kunci enkripsi."
             ),
             is_locked=True,
             required_item="firewall_key"
         )
-        firewall_castle.add_connection("south", "digital_forest")
-        firewall_castle.add_connection("east", "server_core")
         
-        # Server Core
+        # Server Core (Final Location)
         server_core = Location(
             location_id="server_core",
             name="Server Core",
@@ -101,24 +256,114 @@ class GameService:
             ),
             items=[self.items['encrypted_data']]
         )
-        server_core.add_connection("west", "firewall_castle")
         
-        # Simpan semua lokasi
+        # ========================
+        # 2. KONEKSI ANTAR LOKASI
+        # ========================
+        
+        # Digital Forest connections (Center Hub)
+        digital_forest.add_connection("north", "segfault_abyss")
+        digital_forest.add_connection("east", "packetflow_deep")
+        digital_forest.add_connection("west", "binaryheart")
+        
+        # Segfault Abyss connections
+        segfault_abyss.add_connection("south", "digital_forest")
+        segfault_abyss.add_connection("down", "memory_gap")
+        segfault_abyss.add_connection("east", "logic_horizon")
+        
+        # Packetflow Deep connections
+        packetflow_deep.add_connection("west", "digital_forest")
+        packetflow_deep.add_connection("south", "algolane_square")
+        packetflow_deep.add_connection("down", "fragment_hive")
+        
+        # Logic Horizon connections
+        logic_horizon.add_connection("west", "segfault_abyss")
+        logic_horizon.add_connection("north", "kernel_spire")
+        
+        # Algolane Merchant Square connections
+        algolane_square.add_connection("north", "packetflow_deep")
+        algolane_square.add_connection("east", "stormbyte")
+        
+        # Fragment Hive connections
+        fragment_hive.add_connection("up", "packetflow_deep")
+        fragment_hive.add_connection("north", "heartline_node")
+        
+        # Kernel Spire connections
+        kernel_spire.add_connection("south", "logic_horizon")
+        kernel_spire.add_connection("up", "codemantle")
+        
+        # Memory Gap connections
+        memory_gap.add_connection("up", "segfault_abyss")
+        memory_gap.add_connection("east", "heartline_node")
+        
+        # Heartline Node connections
+        heartline_node.add_connection("south", "fragment_hive")
+        heartline_node.add_connection("west", "memory_gap")
+        heartline_node.add_connection("east", "malvex_throne")
+        
+        # Codemantle connections
+        codemantle.add_connection("down", "kernel_spire")
+        codemantle.add_connection("north", "server_core")
+        
+        # Malvex Throne connections
+        malvex_throne.add_connection("west", "heartline_node")
+        
+        # Stormbyte connections
+        stormbyte.add_connection("west", "algolane_square")
+        stormbyte.add_connection("north", "server_core")
+        
+        # Binaryheart Woods connections
+        binaryheart.add_connection("east", "digital_forest")
+        binaryheart.add_connection("north", "firewall_castle")
+        
+        # Firewall Castle connections
+        firewall_castle.add_connection("south", "binaryheart")
+        firewall_castle.add_connection("east", "server_core")
+        
+        # Server Core connections
+        server_core.add_connection("west", "firewall_castle")
+        server_core.add_connection("south", "stormbyte")
+        server_core.add_connection("southwest", "codemantle")
+        
+        # ========================
+        # 3. SIMPAN SEMUA LOKASI
+        # ========================
+        
         self.locations = {
+            # Zona Awal
             "digital_forest": digital_forest,
+            "binaryheart": binaryheart,
+            "segfault_abyss": segfault_abyss,
+            "packetflow_deep": packetflow_deep,
+            
+            # Zona Tengah
+            "algolane_square": algolane_square,
+            "logic_horizon": logic_horizon,
+            "fragment_hive": fragment_hive,
+            "memory_gap": memory_gap,
+            "stormbyte": stormbyte,
+            
+            # Zona Pertahanan
             "firewall_castle": firewall_castle,
-            "server_core": server_core
+            "kernel_spire": kernel_spire,
+            "heartline_node": heartline_node,
+            
+            # Zona Akhir
+            "codemantle": codemantle,
+            "malvex_throne": malvex_throne,
+            "server_core": server_core,
         }
     
     def create_enemies(self):
         """Membuat musuh-musuh dalam game"""
+        # Existing enemies
         self.enemies = {
             "bug_monster": {
                 "name": "Bug Monster",
                 "health": 60,
                 "attack": 15,
                 "defense": 5,
-                "description": "Makhluk mengerikan dari bug kode yang tidak teratasi.",
+                "description": "Bug kode yang tidak teratasi.",
                 "location": "digital_forest",
                 "reward": {"knowledge": 20, "item": self.items['logic_sword']}
             },
@@ -133,6 +378,88 @@ class GameService:
             }
         }
         
+        # NEW ENEMIES untuk lokasi baru
+        new_enemies = {
+            # Segfault Abyss
+            "segfault_specter": {
+                "name": "Segfault Specter",
+                "health": 80,
+                "attack": 25,
+                "defense": 10,
+                "description": "Hantu dari crash algorithm yang fatal.",
+                "location": "segfault_abyss",
+                "reward": {"knowledge": 30, "item": self.items['defrag_tool']}
+            },
+            
+            # Packetflow Deep
+            "packet_shark": {
+                "name": "Packet Shark",
+                "health": 70,
+                "attack": 20,
+                "defense": 15,
+                "description": "Predator yang memakan packet data.",
+                "location": "packetflow_deep",
+                "reward": {"knowledge": 25, "item": self.items['packet_sniffer']}
+            },
+            
+            # Fragment Hive
+            "fragment_drone": {
+                "name": "Fragment Drone",
+                "health": 90,
+                "attack": 30,
+                "defense": 20,
+                "description": "Bug drone penjaga Fragment Hive.",
+                "location": "fragment_hive",
+                "reward": {"knowledge": 40, "item": self.items['logic_key']}
+            },
+            
+            # Memory Gap
+            "memory_phantom": {
+                "name": "Memory Phantom",
+                "health": 100,
+                "attack": 35,
+                "defense": 25,
+                "description": "Hantu dari memori yang terhapus.",
+                "location": "memory_gap",
+                "reward": {"knowledge": 45, "item": self.items['memory_shard']}
+            },
+            
+            # Binaryheart Woods
+            "binary_wolf": {
+                "name": "Binary Wolf",
+                "health": 75,
+                "attack": 22,
+                "defense": 18,
+                "description": "Serigala dengan pola bulu 0 dan 1.",
+                "location": "binaryheart",
+                "reward": {"knowledge": 28, "item": self.items['binary_seed']}
+            },
+            
+            # Stormbyte Expanse
+            "storm_golem": {
+                "name": "Storm Golem",
+                "health": 120,
+                "attack": 40,
+                "defense": 30,
+                "description": "Golem dari bit-bit hujan data.",
+                "location": "stormbyte",
+                "reward": {"knowledge": 50, "item": self.items['storm_cape']}
+            },
+            
+            # BOSS: Malvex
+            "malvex_boss": {
+                "name": "Malvex, Sovereign of the Nullwave",
+                "health": 300,
+                "attack": 60,
+                "defense": 50,
+                "description": "Raja virus penguasa Nullwave.",
+                "location": "malvex_throne",
+                "reward": {"knowledge": 100, "item": self.items['nullwave_orb']}
+            },
+        }
+        
+        self.enemies.update(new_enemies)
+        
         # Tambahkan musuh ke lokasi
         for enemy_id, enemy_data in self.enemies.items():
             location = self.locations.get(enemy_data["location"])
@@ -142,11 +469,12 @@ class GameService:
     def create_puzzles(self):
         """Membuat puzzle-puzzle dalam game"""
         self.puzzles = {
+            # Existing puzzles
             "binary_puzzle": {
                 "puzzle_id": "binary_puzzle",
-                "question": "Dalam sistem binary, berapakah hasil dari 1010 + 0110? (Jawab dalam decimal)",
-                "answer": "16",
-                "hint": "Ubah ke decimal dulu: 1010 = 10, 0110 = 6",
+                "question": "Dalam sistem binary, berapakah hasil dari 1010 + 1010? (decimal)",
+                "answer": "20",
+                "hint": "1010 binary = 10 decimal",
                 "location": "digital_forest",
                 "reward": {"knowledge": 15, "item": self.items['energy_drink']}
             },
@@ -157,7 +485,134 @@ class GameService:
                 "hint": "Setiap huruf digeser 3 ke kiri",
                 "location": "server_core",
                 "reward": {"knowledge": 25}
-            }
+            },
+            
+            # NEW PUZZLES untuk lokasi baru
+            
+            # Segfault Abyss - Stack Trace Puzzle
+            "stack_trace_puzzle": {
+                "puzzle_id": "stack_trace",
+                "question": "Dalam stack trace: 'Segmentation fault at 0x7ffd4a2b' - "
+                           "Apa arti 0x7ffd4a2b? (jawab: memory address / line number / function name)",
+                "answer": "memory address",
+                "hint": "0x menandakan hexadecimal address",
+                "location": "segfault_abyss",
+                "reward": {"knowledge": 25, "item": self.items['health_potion']}
+            },
+            
+            # Packetflow Deep - Network Puzzle
+            "network_puzzle": {
+                "puzzle_id": "network_puzzle",
+                "question": "TCP handshake punya 3 langkah: SYN, _____, ACK",
+                "answer": "syn-ack",
+                "hint": "Langkah kedua adalah SYN-ACK",
+                "location": "packetflow_deep",
+                "reward": {"knowledge": 30, "item": self.items['data_potion']}
+            },
+            
+            # Logic Horizon - Boolean Puzzle
+            "boolean_puzzle": {
+                "puzzle_id": "boolean_puzzle",
+                "question": "Jika A=True, B=False, maka (A AND B) OR (NOT A) = ?",
+                "answer": "false",
+                "hint": "A AND B = False, NOT A = False, False OR False = False",
+                "location": "logic_horizon",
+                "reward": {"knowledge": 35, "item": self.items['logic_key']}
+            },
+            
+            # Fragment Hive - Array Puzzle
+            "array_puzzle": {
+                "puzzle_id": "array_puzzle",
+                "question": "Array: [5, 8, 3, 1, 9]. Setelah sort ascending, elemen ke-3 adalah?",
+                "answer": "5",
+                "hint": "Sorted: [1, 3, 5, 8, 9]. Elemen ke-3 (index 2) = 5",
+                "location": "fragment_hive",
+                "reward": {"knowledge": 40, "item": self.items['defrag_tool']}
+            },
+            
+            # Kernel Spire - OS Puzzle
+            "os_puzzle": {
+                "puzzle_id": "os_puzzle",
+                "question": "Dalam OS, proses child yang selesai tapi belum di-reap disebut? "
+                           "(zombie / orphan / daemon)",
+                "answer": "zombie",
+                "hint": "Proses yang sudah mati tapi masih ada di process table",
+                "location": "kernel_spire",
+                "reward": {"knowledge": 45, "item": self.items['kernel_access']}
+            },
+            
+            # Memory Gap - Pointer Puzzle
+            "pointer_puzzle": {
+                "puzzle_id": "pointer_puzzle",
+                "question": "int x = 5; int *p = &x; *p = 10; Berapa nilai x sekarang?",
+                "answer": "10",
+                "hint": "Pointer p menunjuk ke x, mengubah *p mengubah x",
+                "location": "memory_gap",
+                "reward": {"knowledge": 50, "item": self.items['memory_shard']}
+            },
+            
+            # Binaryheart Woods - Binary Tree Puzzle
+            "tree_puzzle": {
+                "puzzle_id": "tree_puzzle",
+                "question": "Binary tree dengan inorder: D B E A F C. Preorder: A B D E C F. "
+                           "Postorder traversal-nya?",
+                "answer": "d e b f c a",
+                "hint": "Postorder: kiri-kanan-akar",
+                "location": "binaryheart",
+                "reward": {"knowledge": 55, "item": self.items['logic_potion']}
+            },
+            
+            # Algolane Square - Merchant Puzzle
+            "merchant_puzzle": {
+                "puzzle_id": "merchant_puzzle",
+                "question": "Anda punya 100 bitcoins. Debug Tool (15), Health Potion (30), "
+                           "Logic Sword (25). Berapa sisa jika beli semua?",
+                "answer": "30",
+                "hint": "Total: 15+30+25 = 70. Sisa: 100-70 = 30",
+                "location": "algolane_square",
+                "reward": {"knowledge": 20, "item": self.items['quantum_potion']}
+            },
+            
+            # Heartline Node - Binary Heartbeat Puzzle
+            "heartbeat_puzzle": {
+                "puzzle_id": "heartbeat_puzzle",
+                "question": "Detak jantung biner: 01001000 01100101 01101100 01101100 01101111. "
+                           "Decode ke ASCII (string pendek).",
+                "answer": "hello",
+                "hint": "Setiap 8 bit = 1 karakter ASCII",
+                "location": "heartline_node",
+                "reward": {"knowledge": 60, "item": self.items['heart_key']}
+            },
+            
+            # Stormbyte Expanse - Bitwise Puzzle
+            "bitwise_puzzle": {
+                "puzzle_id": "bitwise_puzzle",
+                "question": "1010 (10) AND 0110 (6) = ? (dalam binary 4-bit)",
+                "answer": "0010",
+                "hint": "Bitwise AND: 1&0=0, 0&1=0, 1&1=1, 0&0=0",
+                "location": "stormbyte",
+                "reward": {"knowledge": 65, "item": self.items['storm_cape']}
+            },
+            
+            # Codemantle - Syntax Puzzle
+            "syntax_puzzle": {
+                "puzzle_id": "syntax_puzzle",
+                "question": "Apa output: for i in range(3): print(i*2) ?",
+                "answer": "0 2 4",
+                "hint": "i = 0,1,2 → i*2 = 0,2,4",
+                "location": "codemantle",
+                "reward": {"knowledge": 70, "item": self.items['royal_syntax']}
+            },
+            
+            # Malvex Throne - Final Puzzle
+            "final_puzzle": {
+                "puzzle_id": "final_puzzle",
+                "question": "Decrypt: Gur pxevpx vf rapelcgrq. (Caesar cipher ROT13)",
+                "answer": "the check is encrypted",
+                "hint": "ROT13: g→t, u→h, r→e, dll.",
+                "location": "malvex_throne",
+                "reward": {"knowledge": 100, "item": self.items['antivirus_sword']}
+            },
         }
         
         # Tambahkan puzzle ke lokasi
@@ -197,6 +652,30 @@ class GameService:
             template_file = "locations/firewall_castle.txt"
         elif location.location_id == "server_core":
             template_file = "locations/server_core.txt"
+        elif location.location_id == "segfault_abyss":
+            template_file = "locations/segfault_abyss.txt"
+        elif location.location_id == "packetflow_deep":
+            template_file = "locations/packetflow_deep.txt"
+        elif location.location_id == "logic_horizon":
+            template_file = "locations/logic_horizon.txt"
+        elif location.location_id == "algolane_square":
+            template_file = "locations/algolane_square.txt"
+        elif location.location_id == "fragment_hive":
+            template_file = "locations/fragment_hive.txt"
+        elif location.location_id == "kernel_spire":
+            template_file = "locations/kernel_spire.txt"
+        elif location.location_id == "memory_gap":
+            template_file = "locations/memory_gap.txt"
+        elif location.location_id == "heartline_node":
+            template_file = "locations/heartline_node.txt"
+        elif location.location_id == "codemantle":
+            template_file = "locations/codemantle.txt"
+        elif location.location_id == "malvex_throne":
+            template_file = "locations/malvex_throne.txt"
+        elif location.location_id == "stormbyte":
+            template_file = "locations/stormbyte.txt"
+        elif location.location_id == "binaryheart":
+            template_file = "locations/binaryheart.txt"
         
         # Tampilkan template jika ada, atau tampilkan deskripsi default
         try:
@@ -536,28 +1015,35 @@ Temukan The Lost Code di Server Core dan keluar dari dunia Algoria!
     
     def check_win_condition(self):
         """Memeriksa apakah player menang"""
-        # Ubah kondisi kemenangan menjadi lebih realistis (dari 100 ke 70 knowledge)
+        # Kondisi baru: harus mengalahkan Malvex DAN punya Encrypted Data
+        has_defeated_malvex = "malvex_boss" not in [
+            e.get('name', '').lower() for loc in self.locations.values() 
+            for e in loc.enemies if e.get('name', '').lower() == "malvex"
+        ]
+        
         if (self.player.has_item("Encrypted Data") and 
-            self.player.knowledge >= 70 and
-            self.player.current_location == "server_core"):
+            self.player.knowledge >= WIN_REQUIREMENTS['min_knowledge'] and  # Gunakan konstanta
+            self.player.current_location == WIN_REQUIREMENTS['final_location'] and
+            has_defeated_malvex):
             
             try:
                 good_ending = load_template("endings/good_ending.txt")
                 print(f"\n{Fore.GREEN}{good_ending}{Fore.RESET}")
             except:
-                print(f"\n{Fore.GREEN}=== SELAMAT! ==={Fore.RESET}")
-                print(f"{Fore.GREEN}Anda berhasil menemukan The Lost Code of Algoria!{Fore.RESET}")
-                print(f"{Fore.GREEN}Dengan pengetahuan yang cukup, Anda berhasil mendekripsi data.{Fore.RESET}")
-                print(f"{Fore.GREEN}Anda menemukan kode yang membuka portal kembali ke dunia nyata!{Fore.RESET}")
-                print(f"\n{Fore.CYAN}Terima kasih telah bermain, {self.player.name}!{Fore.RESET}")
+                print(f"\n{Fore.GREEN}=== VICTORY! ==={Fore.RESET}")
+                print(f"Anda berhasil mengalahkan Malvex dan menemukan The Lost Code!")
+                print(f"Anda menyelamatkan Algoria dari korupsi total!")
             
-            # Tampilkan statistik akhir
-            print(f"\n{Fore.YELLOW}=== STATISTIK AKHIR ===")
-            print(f"Total Knowledge: {self.player.knowledge}")
-            print(f"Health tersisa: {self.player.health}/{self.player.max_health}")
-            print(f"Energy tersisa: {self.player.energy}/{self.player.max_energy}")
-            print(f"Item yang dikumpulkan: {len(self.player.inventory)}")
-            print(f"Lokasi yang dijelajahi: {len(self.player.unlocked_locations)}{Fore.RESET}")
+            # Tampilkan statistik lengkap
+            print(f"\n{Fore.CYAN}=== FINAL STATISTICS ===")
+            print(f"Player: {self.player.name}")
+            print(f"Final Knowledge: {self.player.knowledge}")
+            print(f"Health: {self.player.health}/{self.player.max_health}")
+            print(f"Locations Explored: {len(self.player.unlocked_locations)}/15")
+            print(f"Items Collected: {len(self.player.inventory)}")
+            print(f"Quests Completed: {len(self.player.completed_quests)}")
+            print(f"Enemies Defeated: {15 - sum(len(loc.enemies) for loc in self.locations.values())}")
+            print(f"================================{Fore.RESET}")
             
             return True
         

@@ -1,0 +1,39 @@
+====================================================================
+                     ALGOLANE MERCHANT SQUARE
+====================================================================
+                       🛒 PASAR DIGITAL 🛒
+
+Pasar yang ramai dan penuh warna! Avatar dan bot dari berbagai
+dimensi programming berdagang di kios-kios digital. Suara
+tawar-menawar dalam berbagai bahasa programming memenuhi udara.
+
+TOKO-TOKO:
+1. MEMORY EMPORIUM: Jual-beli RAM dan storage
+2. QUANTUM BAZAAR: Bits quantum dan algoritma langka
+3. DEBUG DINER: Restoran untuk repair avatar
+4. SYNTAX STALL: Jual snippet code dan library
+
+BARANG DAGANGAN:
+- Memory Chips: +20 max memory
+- CPU Cores: +15 processing power  
+- GPU Clusters: +25 graphics
+- API Tokens: Akses ke service premium
+- Bug Repellent: Proteksi dari bug kecil
+
+SUARA:
+- "Buy low, sell high!" - Trader bot
+- "Fresh algorithms here!" - Merchant avatar
+- "Debug special today!" - Diner owner
+
+PERATURAN PASAR:
+1. Hanya transaksi dengan bitcoin digital
+2. No corrupted goods allowed
+3. All sales are final
+
+KONEKSI:
+- NORTH: Kembali ke Packetflow Deep
+- EAST: Menuju Stormbyte Expanse
+
+PUZZLE MERCHANT:
+Seorang merchant menawarkan puzzle matematika
+untuk diskon spesial...

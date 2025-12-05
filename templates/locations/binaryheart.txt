@@ -1,0 +1,46 @@
+====================================================================
+                       BINARYHEART WOODS
+====================================================================
+                       🌲 HUTAN DETAK ANGKA 🌲
+
+Hutan kuno yang memiliki "detak angka" seperti jantung digital.
+Pohon-pohon berakar dalam binary soil, daun-daunnya berubah warna
+antara 0 (hijau) dan 1 (biru) sesuai ritme biner.
+
+SIRKULASI BINER:
+- ROOT NETWORK: Akar menyebar binary
+- TRUNK CURRENTS: Batang mengalirkan data
+- LEAF PULSES: Daun berdenyut 0/1
+- SAP STREAM: Getah adalah data flow
+
+FLORA DIGITAL:
+- BINARY OAK: Pohon ek dengan pattern 0101
+- BOOLEAN PINE: Pinus dengan cabang true/false
+- LOGIC MAPLE: Maple dengan daun conditional
+- ARRAY ASPEN: Aspen yang tumbuh dalam array
+
+FAUNA:
+- BINARY WOLF: Serigala dengan bulu 0 dan 1
+- LOGIC DEER: Rusa dengan tanduk boolean
+- LOOP SQUIRREL: Tupai yang berjalan dalam loop
+- RECURSION BIRD: Burung yang bernyanyi recursive
+
+SUARA:
+- Detak "0-1" dari pohon
+- Gemerisik daun binary
+- Panggilan hewan algoritma
+- Aliran getah data
+
+EFEK POSITIF:
+- Health regen: +3/minute
+- Energy regen: +5/minute
+- Knowledge gain: +1/minute
+- Sanity restore: Calming effect
+
+KONEKSI:
+- EAST: Menuju Digital Forest
+- NORTH: Menuju Firewall Castle
+
+PUZZLE:
+Ancient binary tree dengan
+puzzle traversal algorithms...

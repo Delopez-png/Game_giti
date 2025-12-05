@@ -1,0 +1,42 @@
+====================================================================
+                     THE LOGIC KERNEL SPIRE
+====================================================================
+                      🏰 MENARA OTAK ALGORIA 🏰
+
+Menara menjulang tinggi ke langit digital, berfungsi sebagai
+otak utama dunia Algoria. Processor core raksasa berputar di
+puncak, memancarkan gelombang logika ke segala penjuru.
+
+STRUKTUR MENARA:
+- BASE: Assembly code foundations
+- MID: C++ and Java chambers  
+- HIGH: Python and JavaScript floors
+- SUMMIT: Quantum processor core
+
+FITUR:
+- SPIRAL STAIRCASE: Tangga dari baris kode
+- MEMORY ELEVATORS: Lift yang menggunakan RAM
+- CACHE BALCONIES: Balkon dengan view cache
+
+SUARA:
+- Hum processor yang konstan
+- Klik mekanisme logika
+- Suara "processing" dari core
+
+KEAMANAN TINGGI:
+⚠️ AREA TERKUNCI ⚠️
+Butuh KERNEL ACCESS CARD untuk masuk
+Security protocols aktif!
+
+SISTEM PERTAHANAN:
+- Logic traps di setiap lantai
+- Memory guards patrol
+- System call alarms
+
+KONEKSI:
+- SOUTH: Kembali ke Logic Horizon Plains
+- UP: Naik ke Codemantle Dominion
+
+PUZZLE:
+Terminal kernel dengan puzzle OS
+tentang process management...

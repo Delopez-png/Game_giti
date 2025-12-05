@@ -1,0 +1,42 @@
+====================================================================
+                          FRAGMENT HIVE
+====================================================================
+                     🐝 SARANG DATA PECAHAN 🐝
+
+Sarang raksasa berbentuk hexagonal tempat fragment data
+yang tidak lengkap berkumpul. Dinding-dinding berwarna kuning
+berisi potongan kode yang bergerak-gerak tak karuan.
+
+STRUKTUR HIVE:
+- SEL HEXAGONAL: Setiap sel berisi fragment berbeda
+- ROYAL CHAMBER: Kamar ratu fragment
+- WORKER TUNNELS: Terowongan fragment worker
+- STORAGE COMB: Penyimpanan data terkorup
+
+PENDUDUK:
+- FRAGMENT DRONE: Bug penjaga hive
+- DATA WORKER: Fragment yang terus bekerja
+- ROYAL FRAGMENT: Fragment ratu yang mengontrol semua
+
+SUARA:
+- Dengung byte yang terkorupsi
+- Suara "crack" saat fragment patah
+- Gemerisik data yang bergeser
+
+BAHAYA TINGGI:
+⚠️ AREA TERKUNCI ⚠️
+Butuh DEFRAG TOOL untuk masuk
+Fragment bisa corrupt memory Anda!
+
+EFEK NEGATIF:
+- Standing here drains 5 energy/minute
+- Chance of random memory corruption
+- Fragment attacks if threatened
+
+KONEKSI:
+- UP: Kembali ke Packetflow Deep  
+- NORTH: Menuju Heartline Node (setelah bersihkan)
+
+PUZZLE:
+Sebuah console fragmentasi menampilkan
+puzzle sorting array yang rusak...

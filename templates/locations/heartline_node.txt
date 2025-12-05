@@ -1,0 +1,47 @@
+====================================================================
+                     CENTRAL HEARTLINE NODE
+====================================================================
+                      ❤️ JANTUNG DIGITAL ❤️
+
+Di tengah ruangan raksasa, sebuah kristal data berdenyut seperti
+jantung. Cahaya biner (0/1) memancar dalam ritme teratur,
+mengalirkan energi kehidupan ke seluruh Algoria.
+
+STRUKTUR JANTUNG:
+- CRYSTAL CORE: Kristal data raksasa
+- ARTERY PIPES: Pipa energi biner
+- VALVE MECHANISMS: Katup kontrol aliran
+- RHYTHM GENERATORS: Pembuat ritme detak
+
+CAHAYA BINER:
+- Pulse 0: Cahaya biru (false)
+- Pulse 1: Cahaya kuning (true)
+- Rhythm: 0101010101... (pattern hidup)
+
+SUARA:
+- Detak "0-1, 0-1" yang konstan
+- Desiran energi yang mengalir
+- Bunyi katup yang membuka-menutup
+
+ENERGI MURNI:
+- Standing here restores 5 energy/minute
+- Health regeneration: +2/minute
+- Knowledge absorption: +1/minute
+
+KEAMANAN MAXIMUM:
+⚠️ AREA TERKUNCI ⚠️
+Butuh HEART KEY untuk masuk
+Ini adalah organ vital Algoria!
+
+PERINGATAN:
+Jangan ganggu ritme jantung!
+Gangguan bisa crash seluruh sistem.
+
+KONEKSI:
+- SOUTH: Dari Fragment Hive
+- WEST: Dari Memory Gap
+- EAST: Menuju Malvex's Throne
+
+PUZZLE:
+Interface jantung dengan puzzle
+decoding binary ke ASCII...
